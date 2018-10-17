@@ -38,3 +38,10 @@ def scrape(request):
             continue
 
     return redirect('/')
+
+def delete_article(request, article_id):
+    """Delete a stored article."""
+    article = Article.objects.get(title=article_id)
+    article.delete()
+
+    return redirect('/')

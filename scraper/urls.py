@@ -11,4 +11,7 @@ urlpatterns = [
 
     # Scrape articles.
     path('scrape/', views.scrape, name='scrape'),
+
+    # Delete an article.
+    path('delete/<article_id>/', views.delete_article, name='delete_article')
 ]
