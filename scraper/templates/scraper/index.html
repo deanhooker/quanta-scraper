@@ -1,3 +1,8 @@
 <p>Scraper</p>
 
 <p>Scrapes the Quanta magazine homepage for featured articles.</p>
+
+<form method="POST" action="{% url 'scraper:scrape' %}">
+    {% csrf_token %}
+    <button type="submit">Scrape Quanta</button>
+</form>

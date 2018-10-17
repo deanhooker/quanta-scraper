@@ -8,4 +8,7 @@ app_name = 'scraper'
 urlpatterns = [
     # Home page.
     path('', views.index, name='index'),
+
+    # Scrape articles.
+    path('scrape/', views.scrape, name='scrape'),
 ]
