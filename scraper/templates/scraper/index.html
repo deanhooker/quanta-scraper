@@ -10,7 +10,11 @@
 <ul>
     {% if article_list %}
         {% for article in article_list %}
-            <li><a href="{{article.link}}" target="_blank">{{article.title}}</a></li>
+            <li>
+                <h3><a href="{{article.link}}" target="_blank">{{article.title}}</a></h3>
+                <p>{{article.excerpt}}</p>
+            </li>
+
         {% endfor %}
     {% else %}
         <li>No articles...</li>

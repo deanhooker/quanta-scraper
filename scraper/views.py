@@ -22,8 +22,6 @@ def scrape(request):
     soup = BeautifulSoup(res.text, 'html.parser')
     elems = soup.select('.card')
 
-    articles = []
-
     for elem in elems:
         titleElem = elem.select('.card__title')
         excerptElem = elem.select('.card__excerpt')
@@ -33,6 +31,10 @@ def scrape(request):
         new_article.title = titleElem[0].getText()
         new_article.excerpt = excerptElem[0].getText().strip()
         new_article.link = website + linkElem[0]['href']
-        new_article.save()
+        try:
+            new_article.save()
+        except:
+            print('Error: duplicate entry')
+            continue
 
     return redirect('/')
