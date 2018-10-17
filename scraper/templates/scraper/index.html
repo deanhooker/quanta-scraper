@@ -6,3 +6,13 @@
     {% csrf_token %}
     <button type="submit">Scrape Quanta</button>
 </form>
+
+<ul>
+    {% if article_list %}
+        {% for article in article_list %}
+            <li><a href="{{article.link}}" target="_blank">{{article.title}}</a></li>
+        {% endfor %}
+    {% else %}
+        <li>No articles...</li>
+    {% endif %}
+</ul>
