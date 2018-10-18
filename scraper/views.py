@@ -20,6 +20,7 @@ def scrape(request):
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, 'html.parser')
+     
     elems = soup.select('.card')
 
     for elem in elems:
