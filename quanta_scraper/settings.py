@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party apps
+    'bootstrap4',
+
     # My apps
     'scraper',
 ]
@@ -121,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Settings for django-bootstrap4
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

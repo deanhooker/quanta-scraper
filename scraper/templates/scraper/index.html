@@ -1,27 +1,49 @@
-<p>Scraper</p>
+{% load bootstrap4 %}
 
-<p>Scrapes the Quanta magazine homepage for featured articles.</p>
+<!DOCTYPE html>
+<html>
 
-<form method="POST" action="{% url 'scraper:scrape' %}">
-    {% csrf_token %}
-    <button type="submit">Scrape Quanta</button>
-</form>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<ul>
-    {% if article_list %}
+    <title>Quanta Scraper</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Quanta Scraper</h1>
+            <p>Scrapes the Quanta magazine homepage for featured articles.</p>
+            <form method="POST" action="{% url 'scraper:scrape' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Scrape Quanta</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        {% if article_list %}
         {% for article in article_list %}
-            <li>
-                <h3><a href="{{article.link}}" target="_blank">{{article.title}}</a></h3>
-                <p>{{article.excerpt}}</p>
-                <form method="POST" action="{% url 'scraper:delete_article' article.title %}">
-                    <!-- <form> -->
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
+        <div class="card p-2 mb-3">
+            <h3><a href="{{article.link}}" target="_blank">{{article.title}}</a></h3>
+            <p>{{article.excerpt}}</p>
+            <form method="POST" action="{% url 'scraper:delete_article' article.title %}">
+                <!-- <form> -->
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
 
         {% endfor %}
-    {% else %}
-        <li>No articles...</li>
-    {% endif %}
-</ul>
+        {% else %}
+        <p>No articles...</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
