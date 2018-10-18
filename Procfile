@@ -1,0 +1,1 @@
+web: gunicorn quanta_scraper.wsgi --log-file -
