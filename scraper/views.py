@@ -9,9 +9,15 @@ from .models import Article
 def index(request):
     """The home page for scraper."""
     articles = Article.objects.all()
-    context = {
-        'article_list': articles,
-    }
+    if articles:
+        context = {
+            'article_list': articles,
+        }
+    else:
+        context = {
+            'article_list': [],
+        }
+
     return render(request, 'scraper/index.html', context)
 
 def scrape(request):
